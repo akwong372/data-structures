@@ -17,6 +17,7 @@ var Stack = function() {
     if (size > 0){
       delete storage[size];
       size--;
+      lastValue = storage[size];
     }
     return lastValue;
   };
