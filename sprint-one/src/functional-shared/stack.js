@@ -13,10 +13,13 @@ var Stack = function() {
 var stackMethods = {};
 
 stackMethods.push = function(value){
-
+  this.storageSize++;
 };
 
 stackMethods.pop = function(value){
+  if (this.storageSize > 0){
+    this.storageSize--;
+  }
 
 };
 
