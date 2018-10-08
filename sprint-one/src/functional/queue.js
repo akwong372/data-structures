@@ -12,7 +12,9 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    size--;
+    if (size > 0){
+      size--;
+    }
   };
 
   someInstance.size = function() {
