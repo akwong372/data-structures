@@ -22,6 +22,9 @@ var Queue = function() {
     }
     firstItem = storage[0];
     delete storage[0];
+    for (key in storage){
+      storage[key - 1] = storage[key];
+    }
     return firstItem;
   };
 
