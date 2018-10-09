@@ -25,8 +25,10 @@ queueMethods.dequeue = function() {
     this.firstItem = this.storage[0];
     delete this.storage[0];
   }
+  for (key in this.storage){
+    this.storage[key - 1] = this.storage[key];
+  }
   return this.firstItem;
-
 };
 
 queueMethods.size = function() {
