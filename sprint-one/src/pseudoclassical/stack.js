@@ -6,14 +6,18 @@ var Stack = function() {
   this.lastItem;
 };
 
-Stack.prototype.push = function() {
+Stack.prototype.push = function(value) {
+  this.storage[this.storageSize] = value;
   this.storageSize++;
 };
 
 Stack.prototype.pop = function() {
   if (this.storageSize > 0){
     this.storageSize--;
+    this.lastItem = this.storage[this.storageSize]
+    delete this.storage[this.storageSize];
   }
+  return this.lastItem;
 };
 
 Stack.prototype.size = function() {
