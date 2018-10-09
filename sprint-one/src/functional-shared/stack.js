@@ -13,17 +13,19 @@ var Stack = function() {
 var stackMethods = {};
 
 stackMethods.push = function(value){
+  this.storage[this.storageSize] = value;
   this.storageSize++;
 };
 
-stackMethods.pop = function(value){
+stackMethods.pop = function(){
   if (this.storageSize > 0){
+    delete this.storage[this.storageSize];
     this.storageSize--;
   }
-
+  return this.storage[this.storageSize]
 };
 
-stackMethods.size = function(value){
+stackMethods.size = function(){
   return this.storageSize;
 };
 
