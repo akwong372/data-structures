@@ -7,11 +7,13 @@ var Stack = function() {
 };
 
 Stack.prototype.push = function() {
-
+  this.storageSize++;
 };
 
 Stack.prototype.pop = function() {
-
+  if (this.storageSize > 0){
+    this.storageSize--;
+  }
 };
 
 Stack.prototype.size = function() {
