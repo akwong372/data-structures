@@ -14,8 +14,11 @@ Queue.prototype.enqueue = function(value) {
 Queue.prototype.dequeue = function() {
   if (this.storageSize > 0){
     this.storageSize--;
-    this.lastItem = this.storage[this.storageSize]
-    delete this.storage[this.storageSize];
+    this.lastItem = this.storage[0]
+    delete this.storage[0];
+  }
+  for (key in this.storage){
+    this.storage[key - 1] = this.storage[key];
   }
   return this.lastItem;
 };
