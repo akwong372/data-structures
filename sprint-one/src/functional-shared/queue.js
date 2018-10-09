@@ -13,11 +13,14 @@ var Queue = function() {
 
 var queueMethods = {};
 
-queueMethods.push = function(value) {
-
+queueMethods.enqueue = function(value) {
+  this.storageSize++;
 };
 
-queueMethods.pop = function() {
+queueMethods.dequeue = function() {
+  if (this.storageSize > 0){
+    this.storageSize--;
+  }
 
 };
 
