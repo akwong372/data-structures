@@ -1,32 +1,45 @@
 var LinkedList = function() {
-  var list = {}; // {head: value, tail: value{value: 12, next{value: 99, next: {} }}
+  var list = {}; // {head: value, tail: value{value: 12, next{value: 99, next: null }}
   list.head = null; // {value: 12, next{value: 99, next: {}}
   list.tail = null; // { value: 10, next: {}}
+  list.oldHeadValue = null;
 
 
-  list.addToTail = function(value){
-  // if list is empty
-    // list.head = new Node(value)
-
-    // if(Object.keys(list).length === 0) {
-    //   list.head = new Node(value);
-    //   list.tail = list.head;
-    // } else {
-    //   // have the previous next point to the new node;
-    //     // current tail points to the new thing
-    //       // new thing becomes the next tail
-    //   list.tail.next = new Node(value);
-    //   list.tail = list.tail.next;
-    // }
-    list.tail = new Node(value);
+  list.addToTail = function(value) {
+    if (list.head === null) {
+      list.head = new Node(value);
+      list.tail = list.head;
+    } else {
+      list.tail.next = new Node(value);
+      list.tail = list.tail.next;
+    }
   };
 
   list.removeHead = function() {
     //it should point to the next value after the first head is removed
+    list.oldHeadValue = list.head.value;
     list.head = list.head.next;
+    return list.oldHeadValue;
   };
 
-  list.contains = function(target) {
+  list.contains = function(target) { // 5
+    var targetSearch = function (node, targetValue) { // list.head.next.next(5), 6
+      debugger;
+      if (node.value === targetValue) { // 4, 6, false | 5, 6 , false |
+        console.log('line 30 evaluated to true');
+        return true;
+      }
+      // else if (node.value !== targetValue)
+
+      if (node.next === null){
+        console.log('line 30 evaluated to false');
+        return false;
+      } else {
+        console.log('re run function');
+        targetSearch(node.next, targetValue); // false
+      }
+    };
+    targetSearch(list.head, target);
   };
 
   return list;
