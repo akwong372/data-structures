@@ -23,23 +23,31 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) { // 5
-    var targetSearch = function (node, targetValue) { // list.head.next.next(5), 6
-      debugger;
-      if (node.value === targetValue) { // 4, 6, false | 5, 6 , false |
-        console.log('line 30 evaluated to true');
+    // var targetSearch = function (node, targetValue) { // list.head.next.next(5), 6
+    //   debugger;
+    //   if (node.value === targetValue) { // 4, 6, false | 5, 6 , false |
+    //     console.log('line 30 evaluated to true');
+    //     return true;
+    //   }
+
+    //   if (node.next === null){
+    //     console.log('line 30 evaluated to false');
+    //     return false;
+    //   } else {
+    //     console.log('re run function');
+    //     targetSearch(node.next, targetValue); // false
+    //   }
+    // };
+    // targetSearch(list.head, target);
+    var node = list.head;
+    while (node !== null){
+      if (node.value === target){
+        //debugger
         return true;
       }
-      // else if (node.value !== targetValue)
-
-      if (node.next === null){
-        console.log('line 30 evaluated to false');
-        return false;
-      } else {
-        console.log('re run function');
-        targetSearch(node.next, targetValue); // false
-      }
-    };
-    targetSearch(list.head, target);
+      node = node.next;
+    }
+    return false;
   };
 
   return list;
