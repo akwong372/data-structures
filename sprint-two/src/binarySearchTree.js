@@ -22,7 +22,7 @@ searchMethods.insert = function(value) {
   // node.value = value;
   // node.left = null;
   // node.right = null;
-  debugger;
+  // debugger;
   var node = this;
 
   //root
@@ -53,19 +53,22 @@ searchMethods.contains = function(value) {
     if (value === child.value) {
       return true;
     }
-
+    debugger;
     if (value < child.value) {
       if (child.left !== null) {
         return searchRecurse(child.left);
+      } else {
+        return false;
       }
     } else if (value > child.value) {
       if (child.right !== null) {
         return searchRecurse(child.right);
+      } else {
+        return false;
       }
     }
   };
-  searchRecurse(node);
-  return false;
+  return searchRecurse(node);
 };
 
 searchMethods.depthFirstLog = function(value) {
