@@ -18,14 +18,7 @@ var extend = function(to, from) {
 var searchMethods = {};
 
 searchMethods.insert = function(value) {
-  // var node = {};
-  // node.value = value;
-  // node.left = null;
-  // node.right = null;
-  // debugger;
   var node = this;
-
-  //root
 
   var searchRecurse = function(child) {
     if (value < child.value) {
@@ -53,7 +46,7 @@ searchMethods.contains = function(value) {
     if (value === child.value) {
       return true;
     }
-    debugger;
+
     if (value < child.value) {
       if (child.left !== null) {
         return searchRecurse(child.left);
@@ -71,10 +64,25 @@ searchMethods.contains = function(value) {
   return searchRecurse(node);
 };
 
-searchMethods.depthFirstLog = function(value) {
+searchMethods.depthFirstLog = function(callback) {
+  var node = this;
 
+  var searchRecurse = function(child) {
+    callback(child.value);
+
+    if (child.left !== null) {
+      searchRecurse(child.left);
+    }
+
+    if (child.right !== null) {
+      searchRecurse(child.right);
+    }
+  };
+  return searchRecurse(node);
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ // Time complexity is Θ(log(n)) due to the functions eliminating half of the tree every time they do work. Worst case
+ // scenario, it would be Linear. - Alvin and TJ
  */
