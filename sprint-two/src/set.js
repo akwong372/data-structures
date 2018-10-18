@@ -18,8 +18,7 @@ setPrototype.remove = function(item) {
   if (this._storage[item]) {
     delete this._storage[item];
   } else {
-    var errorMsg = Error(`Value is not in set`);
-    return errorMsg;
+    return Error(`Value is not in set`);
   }
 };
 

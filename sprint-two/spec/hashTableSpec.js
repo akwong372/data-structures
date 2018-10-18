@@ -47,6 +47,13 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  //new test
+  it('should return an error if there is no node to remove', function() {
+    var errorMsg = Error('Key does not exist')
+    expect(hashTable.remove('Steven')).to.eql(errorMsg);
+  });
+
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

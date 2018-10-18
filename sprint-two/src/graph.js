@@ -17,14 +17,13 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  var errorMsg = Error(`Error trying to remove node`);
   if (this.nodes[node]){
     for (var key in this.nodes) {
       this.removeEdge(node, key);
     }
     delete this.nodes[node];
   } else {
-    return errorMsg;
+    return Error(`Error trying to remove node`);
   }
 };
 
