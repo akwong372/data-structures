@@ -15,7 +15,12 @@ setPrototype.contains = function(item) {
 };
 
 setPrototype.remove = function(item) {
-  delete this._storage[item];
+  if (this._storage[item]) {
+    delete this._storage[item];
+  } else {
+    var errorMsg = Error(`Value is not in set`);
+    return errorMsg;
+  }
 };
 
 /*

@@ -24,4 +24,9 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  //new test
+  it('should return an error if removing a value that does not exist', function() {
+    var errorMsg = Error(`Value is not in set`);
+    expect(set.remove('Mel Gibson')).to.eql(errorMsg);
+  });
 });
