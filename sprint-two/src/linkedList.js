@@ -1,7 +1,7 @@
 var LinkedList = function() {
-  var list = {}; // {head: value, tail: value{value: 12, next{value: 99, next: null }}
-  list.head = null; // {value: 12, next{value: 99, next: {}}
-  list.tail = null; // { value: 10, next: {}}
+  var list = {};
+  list.head = null;
+  list.tail = null;
   list.oldHeadValue = null;
 
 
@@ -16,33 +16,18 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    //it should point to the next value after the first head is removed
-    list.oldHeadValue = list.head.value;
-    list.head = list.head.next;
-    return list.oldHeadValue;
+    if (list.head !== null) {
+      list.oldHeadValue = list.head.value;
+      list.head = list.head.next;
+      return list.oldHeadValue;
+    }
+    return null;
   };
 
-  list.contains = function(target) { // 5
-    // var targetSearch = function (node, targetValue) { // list.head.next.next(5), 6
-    //   debugger;
-    //   if (node.value === targetValue) { // 4, 6, false | 5, 6 , false |
-    //     console.log('line 30 evaluated to true');
-    //     return true;
-    //   }
-
-    //   if (node.next === null){
-    //     console.log('line 30 evaluated to false');
-    //     return false;
-    //   } else {
-    //     console.log('re run function');
-    //     targetSearch(node.next, targetValue); // false
-    //   }
-    // };
-    // targetSearch(list.head, target);
+  list.contains = function(target) {
     var node = list.head;
-    while (node !== null){
-      if (node.value === target){
-        //debugger
+    while (node !== null) {
+      if (node.value === target) {
         return true;
       }
       node = node.next;
@@ -56,12 +41,15 @@ var LinkedList = function() {
 var Node = function(value) {
   var node = {};
 
-  node.value = value; // 1
-  node.next = null; //list.tail.next
+  node.value = value;
+  node.next = null;
 
   return node;
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ // addToTail = constant 0(n) - direct access
+ // removeHead = constant 0(n) - direct access
+ // contains = linear 0(1) - need to loop.
  */

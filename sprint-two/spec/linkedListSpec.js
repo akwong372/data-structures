@@ -52,4 +52,8 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should return null when remove head is called and there is no head.', function() {
+    expect(linkedList.removeHead()).to.equal(null);
+  });
 });
