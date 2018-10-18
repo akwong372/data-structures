@@ -37,4 +37,9 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should execute a callback on every value in a tree using "depthFirstLog" and contain 6', function() {
+  });
+
 });
+

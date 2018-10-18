@@ -49,7 +49,7 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- // addToTail = constant 0(n) - direct access
- // removeHead = constant 0(n) - direct access
- // contains = linear 0(1) - need to loop.
+ // addToTail = constant 0(1) - direct access
+ // removeHead = constant 0(1) - direct access
+ // contains = linear 0(n) - need to loop.
  */

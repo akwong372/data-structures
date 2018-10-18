@@ -3,8 +3,7 @@ var Tree = function(value) {
   newTree.value = value;
 
   // your code here
-  newTree.children = [];  // fix me{value: 5, children:[]}
-                          //{value: "1", children: [{value: 5, children: []}, {value:6, children:[]}]}
+  newTree.children = [];
 
   extend(newTree, treeMethods);
 
@@ -20,33 +19,41 @@ var extend = function(to, from) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // value should be passed in
-  // 'this' will refer to the tree that we want to look at.
   this.children.push(Tree(value));
-
-  // this.children.push({
-  //   'value' : value,
-  //   'children' : []
-  // });
-
 };
-
-// var myTree = {value: undefined, children: [{value: 6 , children: [{value: 5, children: []}]}]}
 
 treeMethods.contains = function(target) {
   var branch = this;
-// var traverse = function(branch, target){
-    if (branch.value === target) { // false
-      return true;
-    }
+  if (branch.value === target) {
+    return true;
+  }
 
   if (branch.children.length > 0) {
     for (var i = 0; i < branch.children.length; i++) {
-      if (branch.children[i].contains(target))
+      if (branch.children[i].contains(target)) {
         return true;
+      }
     }
   }
-
-return false;
+  return false;
 };
 
+treeMethods.eachNode = function(callback) {
+  var branch = this;
+
+  if (branch.value) {
+    callback(branch.value);
+  }
+
+  if (branch.children.length > 0) {
+    for (var i = 0; i < branch.children.length; i++) {
+      branch.children[i].eachNode(callback);
+    }
+  }
+};
+
+/*
+ * Complexity: What is the time complexity of the above functions?
+addChild = O(1) - constant
+contains = O(n) - linear
+ */
