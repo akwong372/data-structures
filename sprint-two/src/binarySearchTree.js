@@ -23,18 +23,49 @@ searchMethods.insert = function(value) {
   // node.left = null;
   // node.right = null;
   debugger;
+  var node = this;
 
   //root
-  if (value < this.value && this.left === null) {
-    this.left = BinarySearchTree(value);
-  } else {
-    this.right = BinarySearchTree(value);
-  }
 
+  var searchRecurse = function(child) {
+    if (value < child.value) {
+      if (child.left === null) {
+        child.left = BinarySearchTree(value);
+      } else {
+        return searchRecurse(child.left);
+      }
+    } else if (value > child.value) {
+      if (child.right === null) {
+        child.right = BinarySearchTree(value);
+      } else {
+        return searchRecurse(child.right);
+      }
+    }
+  };
+  searchRecurse(node);
 };
 
 searchMethods.contains = function(value) {
+  var node = this;
 
+  var searchRecurse = function(child) {
+
+    if (value === child.value) {
+      return true;
+    }
+
+    if (value < child.value) {
+      if (child.left !== null) {
+        return searchRecurse(child.left);
+      }
+    } else if (value > child.value) {
+      if (child.right !== null) {
+        return searchRecurse(child.right);
+      }
+    }
+  };
+  searchRecurse(node);
+  return false;
 };
 
 searchMethods.depthFirstLog = function(value) {
