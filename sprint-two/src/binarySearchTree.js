@@ -81,8 +81,22 @@ searchMethods.depthFirstLog = function(callback) {
   return searchRecurse(node);
 };
 
+searchMethods.size = function() {
+  var node = this;
+  var count = 0;
+  node.depthFirstLog(function(value) {
+    if (value) {
+      count++;
+    }
+  });
+  return count;
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
- // Time complexity is Θ(log(n)) due to the functions eliminating half of the tree every time they do work. Worst case
- // scenario, it would be Linear. - Alvin and TJ
+/
+insert - Θ(log(n))
+contains - Θ(log(n))
+depthFirstLog - Θ(log(n))
+
  */

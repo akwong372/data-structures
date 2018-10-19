@@ -38,7 +38,12 @@ describe('binarySearchTree', function() {
     expect(array).to.eql([5, 2, 3, 7]);
   });
 
-  it('should execute a callback on every value in a tree using "depthFirstLog" and contain 6', function() {
+  //new test
+  it('should return the number of nodes in the tree using "size"', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    expect(binarySearchTree.size()).to.equal(4);
   });
 
 });
