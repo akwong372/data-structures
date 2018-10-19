@@ -1,12 +1,12 @@
 
 
 
-var HashTable = function() { //steven seagal, [[steven, seagal]]
+var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
 };
 
-HashTable.prototype.insert = function(k, v) { //[[k,v][]], [k,v]
+HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var tuple = [k, v];
   var bucket = this._storage.get(index);
@@ -54,8 +54,11 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- // Time complexity should be Constant Time (O1). It may become linear if there are duplicates in an index,
- // though the chances of it happening are very very small. - Alvin and TJ.
+ insert: O(1)
+ retrieve: O(1)
+ remove: O(1)
+ There is an extremely low chance of all functions being linear 0(n), only if there are duplicates. However the chance for duplicates
+ in the same index are extremely low.
  */
 
 

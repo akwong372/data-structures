@@ -24,6 +24,7 @@ setPrototype.remove = function(item) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- // The time complexity would be 01, because all of the methods/functions are direct lookups.
- // Alvin and TJ.
+ add: 0(1)
+ contains: 0(1)
+ remove: 0(1)
  */
